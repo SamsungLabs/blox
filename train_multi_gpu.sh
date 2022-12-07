@@ -2,7 +2,6 @@
 
 next_model=${1:-0}
 models_per_gpu=${2:-25}
-selective=${3:-0}
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
@@ -36,10 +35,10 @@ for ((i=0; i<${#GPUS[@]}; i++)) do
     ((last_model=next_model+models_per_gpu))
     if [ $IS_DIST -eq 1 ]; then
         ADDR=${CHILDREN_ADDRS[i]}
-        CMD=(ssh "$ADDR" "cd $SCRIPT_DIR; ./train_bucket.sh $next_model $last_model $selective --gpus 0 ${@:4}")
+        CMD=(ssh "$ADDR" "cd $SCRIPT_DIR; ./train_bucket.sh $next_model $last_model $selective --gpus 0 ${@:3}")
     else
         GPU=${GPUS[i]}
-        CMD=("./train_bucket.sh" "$next_model" "$last_model" "$selective" "--gpus" "$GPU" "${@:4}")
+        CMD=("./train_bucket.sh" "$next_model" "$last_model" "--gpus" "$GPU" "${@:3}")
     fi
     echo "${CMD[@]}"
     "${CMD[@]}" &
