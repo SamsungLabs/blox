@@ -16,6 +16,8 @@ def get_points(start, end):
             models = pickle.load(f)
     else:
         models = blox.search_space.get_unique_architectures()
+        if not os.path.isdir('data'):
+            os.mkdir('data')
         with open('data/unique_archs.pickle', 'wb') as f:
             pickle.dump(models, f)
 
