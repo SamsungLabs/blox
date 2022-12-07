@@ -67,7 +67,7 @@ def main():
         if os.path.exists(f'{args.wdir}/{h}'):
             shutil.rmtree(f'{args.wdir}/{h}')
 
-        hist = train.train_single(arch_vec, args.seed, args.stem, args.cells, args)
+        hist = train.train_single(arch_vec=arch_vec, seed=args.seed, stem=args.stem, cells=args.cells, args=args)
         results[h] = hist
 
         with open(results_file, 'wb') as f:
