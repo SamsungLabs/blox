@@ -52,12 +52,13 @@ setup(name=package_name,
       install_requires=[
           'tqdm',
           'numpy',
-          'torch==1.9.0',
-          'torchvision==0.10.0',
+          'torch',
+          'torchvision',
           'networkx>=2.5',
           'ptflops',
           'tensorboard',
-          'pyyaml'
+          'pyyaml',
+          'tabulate'
       ],
       dependency_links=[
       ],
