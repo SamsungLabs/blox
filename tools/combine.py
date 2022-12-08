@@ -62,9 +62,6 @@ def main():
                 except StopIteration:
                     break
 
-            if first['env']['codebase_commit'] != 'f6f188191db6b4458a4fc5bdb6d7bd443e82dff2':
-                print(f'Ignoring file: {f!r} since it uses a wrong codebase version! Expected f6f188191db6b4458a4fc5bdb6d7bd443e82dff2 but got {first["env"]["codebase_commit"]}')
-                continue
 
             valid_results = { key: value for key, value in results.items() if value }
             l1, l2 = len(combined), len(valid_results)
