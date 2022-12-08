@@ -58,7 +58,8 @@ setup(name=package_name,
           'ptflops',
           'tensorboard',
           'pyyaml',
-          'tabulate'
+          'tabulate',
+          'pygraphviz'
       ],
       dependency_links=[
       ],
