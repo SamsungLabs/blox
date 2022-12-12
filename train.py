@@ -43,7 +43,7 @@ def get_env_info(gpuidx):
         'platform': platform.platform(),
         'codebase_version': blox.__version__,
         'codebase_commit': blox.__commit__,
-        'torch_version': torch.__version__,
+        'torch_version': str(torch.__version__),
         'torch_commit': torch.version.git_version,
         'torch_cuda_version': torch.version.cuda,
         'torchvision_version': torchvision.__version__,
