@@ -109,8 +109,18 @@ def main():
     best = [(arch, info['test'][200]['top1'][0] if info else 0) for arch, info in combined.items() if info]
     best = sorted(best, key=lambda p: p[1], reverse=True)
 
-    with open('data/hash_to_arch.pickle', 'rb') as f:
-        h2a = pickle.load(f)
+    if os.path.exists('data/hash_to_arch.pickle'):
+        with open('data/hash_to_arch.pickle', 'rb') as f:
+            h2a = pickle.load(f)
+    else:
+        with open('data/unique_archs.pickle', 'rb') as f:
+            models = pickle.load(f)
+        h2a = {}
+        for arch_vec in models:
+            h = blox.search_space.get_model_hash(arch_vec)
+            h2a[h] = arch_vec
+        with open("./data/hash_to_arch.pickle", 'wb') as f:
+            pickle.dump(h2a, f)
 
     print('Worst')
     for h, acc in best[:-21:-1]:

@@ -45,8 +45,8 @@ After training finishes, the results in pickle format are stored under `exp` fol
 Then the following commands are used to generate the dataset
 
 ```
-python tools/combine.py exp --output combined.pickle
-python make_datasets.py
+python tools/combine.py exp/*.pickle --output exp/combined.pickle
+python tools/make_datasets.py
 ```
 
 > **Note:** All accuracy values are saved up to 3 decimal places (where 1.000 == 1%), all loss values are saved with precision of 6 decimal places.
